@@ -1,0 +1,41 @@
+[System]
+Name='car_collision'
+Type='mamdani'
+Version=2.0
+NumInputs=1
+NumOutputs=2
+NumRules=3
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='Distance'
+Range=[0 10]
+NumMFs=3
+MF1='very_close':'gaussmf',[0.817910374975779 2.41]
+MF2='close':'gaussmf',[0.932 5.31692592592593]
+MF3='far':'gaussmf',[0.74 8.45055026455027]
+
+[Output1]
+Name='braking_value'
+Range=[0 1]
+NumMFs=3
+MF1='soft_brake':'trimf',[0.337 0.503968253968254 0.665]
+MF2='very_soft_brake':'trimf',[0.00399 0.173 0.33994708994709]
+MF3='full_brake':'trimf',[0.66005291005291 0.85 1.01]
+
+[Output2]
+Name='Throttle_value'
+Range=[0 1]
+NumMFs=3
+MF1='reduce_throttle':'trimf',[0.00435 0.157 0.318783068783069]
+MF2='throttle_control':'trimf',[0.318783068783069 0.48 0.652]
+MF3='user_control':'trimf',[0.652031746031746 0.820031746031746 0.996031746031746]
+
+[Rules]
+1, 3 1 (1) : 1
+2, 1 2 (1) : 1
+3, 2 3 (1) : 1
