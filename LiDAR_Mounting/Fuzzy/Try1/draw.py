@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 from time import sleep
-#import serial
+# import 0serial
 import math
 import socket
 
@@ -34,7 +34,7 @@ class draw_lidar:
     def processing_conn(self):
         print "Connect Processing"
         HOST = ''  # Symbolic name meaning all available interfaces
-        PORT = 50019  # Arbitrary non-privileged port
+        PORT = 50002  # Arbitrary non-privileged port
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.bind((HOST, PORT))
         s.listen(1)
@@ -44,7 +44,7 @@ class draw_lidar:
     def matlab_conn(self):
         print "Connect MATLAB"
         HOST = 'localhost'
-        PORT = 7013
+        PORT = 7016
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.bind((HOST, PORT))
         s.listen(1)
@@ -55,17 +55,17 @@ class draw_lidar:
     def file_conn(self):
         self.fobj = open("data_lidar.txt")
 
-    def arduino_conn(self):
-        available = []
-        for i in range(256):
-            try:
-                s = serial.Serial("COM" + str(i), 9600)
-                available.append((i, s.portstr))
-                s.close()
-            except serial.SerialException:
-                print str(i) + 'failed'
-                pass
-        return available
+    # def arduino_conn(self):
+    #     available = []
+    #     for i in range(256):
+    #         try:
+    #             s = serial.Serial("COM" + str(i), 9600)
+    #             available.append((i, s.portstr))
+    #             s.close()
+    #         except serial.SerialException:
+    #             print str(i) + 'failed'
+    #             pass
+    #     return available
 
     def cal_converge1(self):
 
@@ -170,20 +170,21 @@ class draw_lidar:
         # distance3 = data[index3 + 1: len(data)]
         try:
             separated_length = map(int, angle)
+
+            final_lenght = 0
+            for num in separated_length:
+                final_lenght = final_lenght * 10
+                final_lenght = final_lenght + num
+            angle = final_lenght
+            # print int(distance1)+4
+            self.iAngle1 = int(angle)
+            self.iAngle1_back = self.iAngle1
+            self.iAngle2 = 180 - self.iAngle1
+            self.iDistance1 = int(distance1)
+            self.iDistance2 = int(distance2)
+            self.iDistance3 = int(distance3)
         except:
             return 1
-        final_lenght = 0
-        for num in separated_length:
-            final_lenght = final_lenght * 10
-            final_lenght = final_lenght + num
-        angle = final_lenght
-        # print int(distance1)+4
-        self.iAngle1 = int(angle)
-        self.iAngle1_back = self.iAngle1
-        self.iAngle2 = 180 - self.iAngle1
-        self.iDistance1 = int(distance1)
-        self.iDistance2 = int(distance2)
-        self.iDistance3 = int(distance3)
         return 0
 
 
@@ -201,15 +202,16 @@ class draw_lidar:
             return ''.join(lin)
 
     def main(self):
-        self.file_conn()
-        # self.processing_conn()
-        self.matlab_conn()
+
+        # self.file_conn()
+        self.processing_conn()
+        # self.matlab_conn()
         try:
             print "try"
             while True:
 
-                line = self.get_data('file')
-                # line = self.process.recv(1024)
+                # line = self.get_data('file')
+                line = self.process.recv(1024)
                 print line
                 if line == ',:;.':
                     if cv2.waitKey(0) == 27:
@@ -220,7 +222,7 @@ class draw_lidar:
                 self.img = self.draw_dot1(self.img)
                 self.img = self.draw_dot2(self.img)
                 self.img = self.draw_dot3(self.img)
-                if True:
+                if False:
                     self.matlab.sendall(str(self.max_val) + "\n")
                     brake = self.matlab.recv(16).split()
                     self.matlab.recv(16)
@@ -240,12 +242,12 @@ class draw_lidar:
                     break
         finally:
             print "Closing"
-            self.fobj.close()
-            self.matlab.close()
-            # self.process.close()
+            # self.fobj.close()
+            # self.matlab.close()
+            self.process.close()
 
 
-ldr = draw_lidar(9)
+ldr = draw_lidar(10)
 ldr.main()
 
 cv2.destroyAllWindows()

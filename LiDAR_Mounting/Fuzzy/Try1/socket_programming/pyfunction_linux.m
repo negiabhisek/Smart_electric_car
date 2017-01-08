@@ -1,8 +1,8 @@
-t = tcpip('localhost', 7012, 'NetworkRole', 'client');
+t = tcpip('localhost', 7016, 'NetworkRole', 'client');
 fopen(t);
 pause(2);
 'Start'
-a = readfis('car_collision');
+a = readfis('car_collision_paper_alternate_change');
 try
     while 1
         
