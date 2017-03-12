@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "106617786346",
+    "firebase_url": "https://nistevlogin.firebaseio.com",
+    "project_id": "nistevlogin",
+    "storage_bucket": "nistevlogin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106617786346:android:bc070e7ca7bd8e02",
+        "android_client_info": {
+          "package_name": "com.example.abhisek.nistev_login"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "106617786346-irammqhta6c0r1cgakr0ph55j1pkd3qf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.abhisek.nistev_login",
+            "certificate_hash": "d807fe419968e3282cc60c10b99a04db39f5cbd8"
+          }
+        },
+        {
+          "client_id": "106617786346-bebcl7qjb5nug4add9phhgrkgjinqotk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDX-x3f64J6AixaFy9CQdp9Hn7B8G3PF0E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "106617786346-bebcl7qjb5nug4add9phhgrkgjinqotk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
