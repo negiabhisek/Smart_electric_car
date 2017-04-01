@@ -31,6 +31,28 @@
                 android:inputType="textPersonName" />
 
             <EditText
+                android:id="@+id/editTextAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:hint="Age"
+                android:inputType="date" />
+
+            <Spinner
+                android:id="@+id/spinnerGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.06"
+                android:spinnerMode="dialog" />
+
+            <EditText
+                android:id="@+id/editTextOccupation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:hint="Occupation" />
+
+            <EditText
                 android:id="@+id/editTextAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,8 +81,9 @@
                 android:id="@+id/spinnerBlood"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:spinnerMode="dialog"
-                android:layout_weight="0.06" />
+                android:layout_weight="0.06"
+                android:prompt="@string/spinnerBlood"
+                android:spinnerMode="dialog" />
 
             <EditText
                 android:id="@+id/editTextPassword"
@@ -68,7 +91,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:hint="Enter password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:text="nistev" />
 
             <EditText
                 android:id="@+id/editTextRePassword"
@@ -76,7 +100,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:hint="Re-enter password"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:text="nistev" />
 
             <Button
                 android:id="@+id/buttonSignup"

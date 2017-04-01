@@ -17,4 +17,15 @@
     <string name="str_rb_normal">Normal</string>
     <string name="str_rb_satellite">Satellite</string>
     <string name="str_rb_terrain">Terrain</string>
+    <string name="spinnerBlood">Select Blood Group</string>
+    <string-array name="blood_group">
+        <item>A+</item>
+        <item>B+</item>
+        <item>AB+</item>
+        <item>O+</item>
+        <item>A-</item>
+        <item>B-</item>
+        <item>AB-</item>
+        <item>O-</item>
+    </string-array>
 </resources>

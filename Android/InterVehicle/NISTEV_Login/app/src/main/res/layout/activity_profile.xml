@@ -23,6 +23,27 @@
             android:textSize="14sp" />
 
         <EditText
+            android:id="@+id/editTextAge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Age"
+            android:text="22"
+            android:inputType="date" />
+
+        <Spinner
+            android:id="@+id/spinnerGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog" />
+
+        <EditText
+            android:id="@+id/editTextOccupation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Occupation"
+            android:text="Engineer" />
+
+        <EditText
             android:id="@+id/editTextAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,6 +58,14 @@
             android:ems="10"
             android:hint="Enter Mobile Number"
             android:inputType="phone" />
+
+        <Spinner
+            android:id="@+id/spinnerBlood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.06"
+            android:prompt="@string/spinnerBlood"
+            android:spinnerMode="dialog" />
 
         <Button
             android:id="@+id/buttonSave"
